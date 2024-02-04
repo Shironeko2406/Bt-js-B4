@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sắp xếp theo thứ tự tăng dần</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Nhập 3 số nguyên</h2>
+        <label for="num1">Số thứ nhất:</label>
+        <input type="number" id="num1" required>
+
+        <label for="num2">Số thứ hai:</label>
+        <input type="number" id="num2" required>
+
+        <label for="num3">Số thứ ba:</label>
+        <input type="number" id="num3" required>
+
+        <button onclick="sortNumbers()">Sắp xếp số</button>
+
+        <h3>Các số đã sắp xếp:</h3>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function sortNumbers() {
+            // Lấy giá trị nhập từ người dùng
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var num3 = parseFloat(document.getElementById("num3").value);
+
+            // Kiểm tra xem đầu vào có phải là số hợp lệ không
+            if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                alert("Vui lòng nhập các số hợp lệ.");
+                return;
+            }
+
+            // Sắp xếp các số theo thứ tự tăng dần
+            var sortedNumbers = [num1, num2, num3].sort(function (a, b) {
+                return a - b;
+            });
+
+            // Hiển thị kết quả
+            document.getElementById("result").innerText = sortedNumbers.join(", ");
+        }
+    </script>
+</body>
+
+</html>

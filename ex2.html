@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào Hỏi Gia Đình</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Input và dropdown sẽ có chiều rộng và chiều cao bằng nhau với nút */
+        input,
+        select {
+            width: 50%;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Người nào đang sử dụng máy?</h2>
+        <label for="familyMember">Chọn một thành viên gia đình:</label>
+        <!-- Input và dropdown có chiều rộng và chiều cao bằng nhau với nút -->
+        <select id="familyMember">
+            <option value="B">Ba</option>
+            <option value="M">Mẹ</option>
+            <option value="A">Anh Trai</option>
+            <option value="E">Em Gái</option>
+        </select>
+
+        <button onclick="greetFamilyMember()">Chào Hỏi</button>
+
+        <p id="greeting"></p>
+    </div>
+
+    <script>
+        function greetFamilyMember() {
+            var selectedMember = document.getElementById("familyMember").value;
+            var greeting = "";
+
+            switch (selectedMember) {
+                case "B":
+                    greeting = "Xin chào Ba! Chào mừng Ba trở về.";
+                    break;
+                case "M":
+                    greeting = "Xin chào Mẹ! Ngày của Mẹ thế nào?";
+                    break;
+                case "A":
+                    greeting = "Chào Anh Trai! Có chuyện gì mới không?";
+                    break;
+                case "E":
+                    greeting = "Hi Em Gái! Em có khỏe không?";
+                    break;
+                default:
+                    greeting = "Xin chào! Chào mừng đến với gia đình.";
+            }
+
+            document.getElementById("greeting").innerText = greeting;
+        }
+    </script>
+</body>
+
+</html>

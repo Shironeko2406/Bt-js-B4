@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Loại Tam Giác</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            /* Điều chỉnh chiều rộng của container */
+            margin: auto;
+            /* Canh giữa container */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            /* Đảm bảo padding không làm tăng kích thước thực tế của input */
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Nhập 3 Cạnh của Một Tam Giác</h2>
+
+        <!-- Input cho cạnh a -->
+        <label for="sideA">Cạnh a:</label>
+        <input type="number" id="sideA" required>
+
+        <!-- Input cho cạnh b -->
+        <label for="sideB">Cạnh b:</label>
+        <input type="number" id="sideB" required>
+
+        <!-- Input cho cạnh c -->
+        <label for="sideC">Cạnh c:</label>
+        <input type="number" id="sideC" required>
+
+        <!-- Nút kích hoạt để kiểm tra loại tam giác -->
+        <button onclick="checkTriangle()">Kiểm Tra Loại Tam Giác</button>
+
+        <!-- Hiển thị kết quả -->
+        <h3>Loại Tam Giác:</h3>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkTriangle() {
+            // Lấy giá trị nhập từ người dùng
+            var sideA = parseFloat(document.getElementById("sideA").value);
+            var sideB = parseFloat(document.getElementById("sideB").value);
+            var sideC = parseFloat(document.getElementById("sideC").value);
+
+            // Kiểm tra xem đầu vào có phải là số hợp lệ không
+            if (isNaN(sideA) || isNaN(sideB) || isNaN(sideC)) {
+                alert("Vui lòng nhập các độ dài cạnh hợp lệ.");
+                return;
+            }
+
+            // Kiểm tra loại tam giác
+            if (sideA === sideB && sideB === sideC) {
+                document.getElementById("result").innerText = "Tam Giác Đều";
+            } else if (sideA === sideB || sideB === sideC || sideC === sideA) {
+                document.getElementById("result").innerText = "Tam Giác Cân";
+            } else if (
+                Math.pow(sideA, 2) + Math.pow(sideB, 2) === Math.pow(sideC, 2) ||
+                Math.pow(sideB, 2) + Math.pow(sideC, 2) === Math.pow(sideA, 2) ||
+                Math.pow(sideC, 2) + Math.pow(sideA, 2) === Math.pow(sideB, 2)
+            ) {
+                document.getElementById("result").innerText = "Tam Giác Vuông (định lý Pythagoras)";
+            } else {
+                document.getElementById("result").innerText = "Tam Giác Thuờng";
+            }
+        }
+    </script>
+</body>
+
+</html>
